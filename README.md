@@ -5,6 +5,8 @@ Installation:
 ```bash
 $ python setup.py install
 ```
+# Introduction
+There are several steps to the process of creating a biophysical model of a neuron. First, you need to have experimental current clamp data which you want your model to match. biophys_optimize was originally designed to be used with the Allen Institute's SDK so if you want to use their experimental data, you can do so right away. If you have your own data, it needs to be in the Neurodata Without Borders (NWB) format. 
 
 # 1) Pre-process
 This step preprocesses the experimental data so it is ready for matching with the model.
@@ -16,7 +18,7 @@ $ python -m biophys_optimize.scripts.run_preprocessing --help
 to get command line options. There are a handful of JSON files for examples in test_input_files. These will need to be edited to define file paths unique to the user's computer.
 
 ## a) Download data using AllenSDK and edit JSON file
-Follow the Jupyter Notebook at https://github.com/latimerb/GeneralTutorials/blob/master/AllenSDK/cell_types.ipynb to download electrophysiology and SWC data. The specimen ID needs to be added to the test_input_files/test_preprocess_input.json file and you need to update the paths to the data. The sweep IDs are unique for each specimen so you will need to look these up.
+Follow the Jupyter Notebook at https://github.com/latimerb/GeneralTutorials/blob/master/AllenSDK/cell_types.ipynb to download electrophysiology and SWC (morphology) data. This will result in two files; a .nwb file containing e-phys data and a .swc file containing morphology data. The Allen Institute's data will have a specimen ID which needs to be added to the test_input_files/test_preprocess_input.json file and you need to update the paths to the data. The sweep IDs are unique for each specimen so you will need to look these up in the .nwb file.
       
 ## b) Run test_preprocessing.py  
 ```bash
