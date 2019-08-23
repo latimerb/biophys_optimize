@@ -18,8 +18,16 @@ $ python -m biophys_optimize.scripts.run_preprocessing --help
 to get command line options. There are a handful of JSON files for examples in test_input_files. These will need to be edited to define file paths unique to the user's computer.
 
 ## a) Download data using AllenSDK and edit JSON file
-Follow the Jupyter Notebook at https://github.com/latimerb/GeneralTutorials/blob/master/AllenSDK/cell_types.ipynb to download electrophysiology and SWC (morphology) data. This will result in two files; a .nwb file containing e-phys data and a .swc file containing morphology data. The Allen Institute's data will have a specimen ID which needs to be added to the test_input_files/test_preprocess_input.json file and you need to update the paths to the data. The sweep IDs are unique for each specimen so you will need to look these up in the .nwb file.
-      
+Follow the Jupyter Notebook at https://github.com/latimerb/GeneralTutorials/blob/master/AllenSDK/cell_types.ipynb to download electrophysiology and SWC (morphology) data. This will result in two files; a .nwb file containing e-phys data and a .swc file containing morphology data. The Allen Institute's data will have a specimen ID which needs to be added to the test_input_files/test_preprocess_input.json file and you need to update the paths to the data (see below). The sweep IDs are unique for each specimen so you will need to look these up in the .nwb file.
+
+```json
+   
+"paths": {
+    "swc": "/home/AllenSDK/cell_types/specimen_313862022/reconstruction.swc", 
+    "storage_directory": "test_storage/", 
+    "nwb": "/home/AllenSDK/cell_types/specimen_313862022/ephys.nwb"
+}, 
+  ```
 ## b) Run test_preprocessing.py  
 ```bash
 $ python -m biophys_optimize.scripts.run_preprocessing --input_json ./test_input_files/test_preprocess_input.json
